@@ -1,0 +1,32 @@
+program BracketValidator;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+ input: string;
+ valid: boolean;
+ i, counter: integer;
+begin
+ counter := 0;
+ valid := true;
+ writeln('Enter your string of brackets:');
+ readln(input);
+ for i := 1 to length(input) do
+   begin
+     if input[i] = '(' then
+       counter := counter + 1
+     else if input[i] = ')' then
+       counter := counter - 1;
+     if counter < 0 then
+       valid := false;
+   end;
+ if valid = false then
+   writeln('That is not a valid input.')
+ else if counter = 0 then
+   writeln('That is a valid input.')
+ else writeln('That is not a valid input.');
+ readln;
+end.
